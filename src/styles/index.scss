@@ -11,3 +11,35 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+ul{
+    border: 1px  solid rgb(226, 226, 226);
+    border-bottom: none;
+    list-style: none;
+    padding: 0;
+   
+} 
+ul > li{
+    border-bottom: 1px solid rgb(226, 226, 226);
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+}
+ul > li > div {
+    color:red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0px 10px;
+    font-size: 1.5rem;
+    opacity: 0;
+}
+ul > li > div:hover{
+    opacity: 1;
+    transition: all .5s;
+}
