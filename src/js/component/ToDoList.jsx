@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ToDoList = () => {
-	const [todos, setTodos] = useState([]);
+	let todosInitial = JSON.parse(localStorage.getItem("todos"));
+	if (!todosInitial) {
+		todosInitial = [];
+	}
+	const [todos, setTodos] = useState(todosInitial);
 	const [task, setTask] = useState("");
 	const [error, setError] = useState(false);
 
@@ -26,6 +30,18 @@ const ToDoList = () => {
 			})
 		);
 	};
+
+	useEffect(
+		() => {
+			let todosInitia = JSON.parse(localStorage.getItem("todos"));
+			if (todosInitia) {
+				localStorage.setItem("todos", JSON.stringify(todos));
+			} else {
+				localStorage.setItem("todos", JSON.stringify([]));
+			}
+		},
+		[todos]
+	);
 
 	return (
 		<div className="container">
